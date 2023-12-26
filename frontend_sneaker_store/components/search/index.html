@@ -1,0 +1,60 @@
+<div class="container w-full bg-white">
+  <div
+    class="w-96 mt-5 flex flex-col items-center justify-center m-auto bg-white border border-gray-200 rounded-lg shadow"
+  >
+    <div
+      class="flex items-center justify-center text-gray-500 hover:text-black bg-gray-50 border border-white text-sm rounded-lg hover:ring-black hover:border-black w-full p-1"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+        />
+      </svg>
+      <input
+        id="user-input"
+        class="bg-gray-50 border border-gray-50 text-gray-900 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-50 block w-full p-1"
+        placeholder="Search"
+        type="text"
+        oninput="showInputValue(this.value)"
+      />
+    </div>
+
+    <div>
+      <p id="result" class="mt-2 w-80"></p>
+    </div>
+
+    <div>
+      <button
+        id="all"
+        class="my-active text-gray-700 border-2 border-gray-700 rounded-3xl p-1 pr-3 pl-3 font-bold"
+      >
+        All
+      </button>
+      <div
+        class="sneaker-list mx-auto grid w-full h-[520px] my-4 grid-cols-2 items-start justify-center overflow-y-scroll"
+      ></div>
+      <div
+        class="flex gap-3 justify-center items-center pb-8"
+        id="pagination-buttons"
+      ></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showInputValue(value) {
+    const resultElement = document.getElementById("result");
+    resultElement.textContent = `Results for"${value}"`;
+  }
+</script>
+<script type="module" src="/libs/userInfo.js"></script>
+<script type="module" src="/components/search/search.js"></script>
