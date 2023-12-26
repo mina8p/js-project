@@ -40,8 +40,13 @@ function sneakerInformation(sneaker) {
 
     .map((color) => {
       return `
-    
-    <div class="rounded-full h-8 w-8 flex justify-center items-center cursor-pointer" style="background-color:${color};"></div>`;
+
+    <div class="border-2 rounded-full">
+    <div class="rounded-full h-8 w-8 flex justify-center items-center cursor-pointer" style="background-color :${color};"></div>
+    </div>`
+
+
+   ;
     })
 
     .join("");
