@@ -46,10 +46,10 @@
 /* styles lmy-active,brands-button*/
 /**********************************/
 .my-active {
-  @apply text-white font-bold rounded-full text-sm px-5 text-center p-1 pr-3 pl-3 bg-gray-800 whitespace-nowrap;
+  @apply text-white font-bold rounded-full text-sm px-5 text-center p-1 pr-3 pl-3 bg-black whitespace-nowrap;
 }
 .brands-button button {
-  @apply border-2 border-gray-800 focus:outline-none font-bold rounded-full text-sm px-5 text-center p-1 pr-3 pl-3 whitespace-nowrap;
+  @apply border-2 border-black  focus:outline-none font-bold rounded-full text-sm px-5 text-center p-1 pr-3 pl-3 whitespace-nowrap;
 }
 
 

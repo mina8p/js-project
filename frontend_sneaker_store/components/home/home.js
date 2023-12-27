@@ -3,9 +3,9 @@ import axios from "axios";
 import { errorHandler } from "../../libs/errorHandler";
 import { fetchUserInfo } from "../../libs/userInfo";
 
-//******************************************//
+//****************************************//
 //_________Show welcome username_________//
-//******************************************//
+//***************************************//
 const usernamePara = document.getElementById("tasksHeaderUsername");
 async function main() {
   const user = await fetchUserInfo();
