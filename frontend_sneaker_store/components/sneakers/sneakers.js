@@ -92,7 +92,7 @@ function sneakerInformation(sneaker) {
     </div>
 
     <div class="ml-3">
-      <h2 class="font-semibold text-base">Decription</h2>
+      <h2 class="font-bold text-base">Decription</h2>
 
       <p id="dic" class="text-[13px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. sed do eiusmod
@@ -102,53 +102,50 @@ function sneakerInformation(sneaker) {
       </p>
     </div>
 
-    <div class="flex justify-start gap-16 ml-3">
+    <div class="flex justify-start gap-10 ml-3">
       <div class="grid gap-2">
-        <p class="font-semibold">Size</p>
+        <p class="font-bold">Size</p>
         <div class="flex gap-2">${sizeTag}</div>
       </div>
 
       <div class="grid gap-2">
-        <p class="font-semibold">Color</p>
+        <p class="font-bold">Color</p>
 
         <div class="flex gap-2 ">${colorTag}</div>
       </div>
     </div>
 
-    <div class="flex gap-6 font-semibold justify-start items-center">
+    <div class="flex gap-4 font-bold justify-start items-center ml-3">
       <p>Quantity</p>
 
       <div
-        class="bg-gray-200 rounded-full px-4 py-2 flex justify-center items-center gap-5"
+        class="bg-gray-200 rounded-full px-3 py-1 flex justify-center items-center gap-5"
       >
-        <button class="btn" id="low-off">-</button>
-
-        <span id="qua">1</span>
-
-        <button class="btn" id="Increase">+</button>
+        <button>-</button><span >1</span><button>+</button>
       </div>
     </div>
 
     <div w-96 h-1>
-    <p class="text-gray-200 flex justify-center items-center">______________________________________________________</p>
+    <p class="text-gray-200 flex justify-center items-center">
+    ______________________________________________________</p>
     </div>
 
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center ml-3 mb-8">
       <div class="grid gap-1">
-        <p class="text-gray-500">Total price</p>
+        <p class="text-gray-600 text-xs">Total price</p>
 
-        <div class="flex font-semibold">
-          <i class="bi bi-currency-dollar"></i>
-
-          <span id="total">${sneaker.price}</span>.00
+        <div class="flex font-bold">
+          <span class="text-2xl ">$${sneaker.price}.00</span>
         </div>
       </div>
 
       <button
-        id="subtoCart"
-        class="rounded-full flex justify-center items-center text-white gap-2 bg-black py-4 px-16"
+        class="rounded-full flex justify-center items-center text-white gap-2 bg-black py-4 px-16 mr-3"
       >
-        <i class="bi bi-bag-fill"></i>add to cart
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z" clip-rule="evenodd" />
+      </svg>
+      add to cart
       </button>
     </div>
   </div>
@@ -159,71 +156,4 @@ function render(sneaker) {
   root.innerHTML = sneakerInformation(sneaker);
 }
 
-// function sneakerInformation(sneaker) {
-//   const sizes = sneaker.sizes.split("|");
-//   const colors = sneaker.colors.split("|");
 
-//   const colorTag = colors
-//     .Map((color) => {
-//       return `
-//         <div class="rounded-full w-8 h-8 flex justify-center items-center cursor-pointer"style = "background-color:${color};"></div>`;
-//     })
-//     .join("");
-
-//   const sizeTag = sizes
-//     .Map((size) => {
-//       return `
-//         <p class="rounded-full w-8 h-8 border border-black flex justify-center cursor-pointer  active:bg-black active:text-white id"active-bottun">${size}</p>`;
-//     })
-//     .join("");
-
-//   return `
-// <div class="w-full">
-//     <img src="${sneaker.imageURL}" class="w-full" alt="picture"/>
-//     <div class=" p-4 grid gap-4"
-//     <div class=" flex justify-between ">
-//     <h1 class="">${sneaker.name}</h1>
-//     <i class="bi bi-heart hover:text-red-700 cursor-pointer"></i>
-//     </div>
-
-//     <div class=" flex gap-10  justify-start items-center">
-//     <div
-//      class""
-//     >
-//     <span>
-//     <p>
-//     </div>
-//     <div>
-
-// </div>`;
-// }
-
-// function render(sneaker) {
-//   root.innerHTML = sneakerInformation(sneaker);
-// }
-
-// const activebutton = document
-//   .getElementById("active-bottun")
-//   .addEventListener("click", () => {
-//     activebutton.classList.add("my-active");
-//   });
-
-// export async function getSingleSneaker(id) {
-//   const token = window.sessionStorage.getItem("token");
-//   console.log(token);
-
-//   try {
-//     const response = await axios({
-//       method: "get",
-//       url: `http://localhist:3000/sneaker/item/${id}`,
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-// console.log (response.data)
-
-//     render(response.data);
-//   } catch (error) {
-//     errorHandler(error);
-//   }
-// }
-
-// getSingleSneaker(sneakerId);
