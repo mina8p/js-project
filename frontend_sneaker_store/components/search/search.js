@@ -41,7 +41,7 @@ function searchBrands(page = 1, search = "") {
       errorHandler(error);
     }
   }
-  const debounce = _.debounce(myDebounce, 4000);
+  const debounce = _.debounce(myDebounce, 1000);
   debounce();
 }
 

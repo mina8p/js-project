@@ -53,8 +53,7 @@ export async function allsneakers(page = 1) {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log(response);
-    console.log(response);
-
+    
     totalSneaker = response.data.total;
     sneaker = response.data.data;
     console.log(sneaker);
@@ -108,7 +107,7 @@ function paginationButton(total) {
   for (let j = 1; j <= total; j++) {
     const btn = document.createElement("button");
     btn.className =
-      "inline-flex items-center border-2 hover:border-black hover:text-black font-bold rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  ";
+      "inline-flex items-center border-2 hover:border-black hover:text-black font-bold rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800";
     btn.textContent = j;
     btn.addEventListener("click", () => allsneakers(j));
     paginationButtons.append(btn);

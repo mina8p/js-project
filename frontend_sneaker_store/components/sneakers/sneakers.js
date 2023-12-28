@@ -47,7 +47,7 @@ function sneakerInfo(sneaker) {
     .map((size) => {
       return `
 <p class="rounded-full h-8 w-8 border border-black flex justify-center items-center
- cursor-pointer active:bg-black active:text-white" id"active-bottun" >${size}</p>`;
+ cursor-pointer   id"active-bottun" >${size}</p>`;
     })
     .join("");
 
