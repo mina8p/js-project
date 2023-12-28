@@ -3,7 +3,7 @@
     class="w-96 mt-5 flex flex-col items-center justify-center m-auto bg-white border border-gray-200 rounded-lg shadow"
   >
     <div
-      class="flex items-center justify-center text-gray-500 hover:text-black bg-gray-50 border border-white text-sm rounded-lg hover:ring-black hover:border-black w-full p-1"
+      class="flex items-center justify-center text-gray-500 hover:text-black bg-gray-50 border border-white text-sm rounded-lg hover:ring-black hover:border-black w-80 p-1 mt-5"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="w-6 h-6"
+        class="w-6 h-6 ml-2"
       >
         <path
           stroke-linecap="round"
@@ -21,7 +21,7 @@
       </svg>
       <input
         id="search-input"
-        class="bg-gray-50 border border-gray-50 text-gray-900 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-50 block w-full p-1"
+        class="bg-gray-50 border border-gray-50 text-gray-900 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-50 block w-80 p-2"
         placeholder="Search"
         type="text"
         required
@@ -30,18 +30,21 @@
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        class="w-6 h-6"
+        class="w-6 h-6 mr-2"
       >
         <path
           d="M18.75 12.75h1.5a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM12 6a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 6ZM12 18a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 12 18ZM3.75 6.75h1.5a.75.75 0 1 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5ZM5.25 18.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 0 1.5ZM3 12a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 3 12ZM9 3.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM12.75 12a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0ZM9 15.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"
         />
       </svg>
     </div>
-    <div class="flex justify-between items-center pb-10">
+
+   
+    
+    <div class="w-80 flex justify-between items-center pb-10 mt-2 text-base">
       <div class="font-bold">
         Results for"<span id="text-value-input"></span><span>"</span>
       </div>
-      <div><span id="total-result-found"></span>founds</div>
+      <div class="font-bold text-sm"><span id="total-result-found"></span>founds</div>
     </div>
 
     
@@ -50,8 +53,8 @@
       class="hidden flex-col justify-center items-center"
     >
       <img
-        src="/frontend_sneaker_store/img/search result not found.png"
-        alt="noot"
+        src="/img/search result not found.png"
+        alt="result not found"
       />
       <h1 class="font-bold">Not Found</h1>
       <p class="text-center p-2 text-sm">
@@ -70,32 +73,7 @@
     ></div>
   </div>
 </div>
-<!-- <script type="module" src="/libs/userInfo.js"></script> -->
+
 <script type="module" src="/components/search/search.js"></script>
 
-<!-- <div>
-  <p id="result" class="mt-2 w-80"></p>
-</div>
 
-<div>
-  <button
-    id="all"
-    class="my-active text-gray-700 border-2 border-gray-700 rounded-3xl p-1 pr-3 pl-3 font-bold"
-  >
-    All
-  </button>
-  <div
-    class="sneaker-list mx-auto grid w-full h-[520px] my-4 grid-cols-2 items-start justify-center overflow-y-scroll"
-  ></div>
-  <div
-    class="flex gap-3 justify-center items-center pb-8"
-    id="pagination-buttons"
-  ></div>
-
-  <script>
-    ///////////////////////////////////oninput="showInputValue(this.value)"
-    function showInputValue(value) {
-      const resultElement = document.getElementById("result");
-      resultElement.textContent = `Results for"${value}"`;
-    }
-  </script> -->

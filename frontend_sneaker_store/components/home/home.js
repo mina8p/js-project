@@ -152,7 +152,7 @@ function paginationButton1(total) {
   for (let j = 1; j <= total; j++) {
     const btn = document.createElement("button");
     btn.className =
-      "inline-flex items-center rounded-3xl border-2 border-gray-700 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-600";
+    "inline-flex items-center border-2 hover:border-black rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  hover:text-black font-bold";
     btn.textContent = j;
     btn.addEventListener("click", () => allnikes(j));
     paginationButtons.append(btn);
