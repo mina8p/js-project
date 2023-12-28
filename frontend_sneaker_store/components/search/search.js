@@ -28,7 +28,7 @@ function searchBrands(page = 1, search = "") {
       });
 
       console.log(response);
-      checker(response.data.total);
+      check(response.data.total);
 
       totalSneaker = response.data.total;
       numberFound.innerText = totalSneaker;
@@ -47,7 +47,7 @@ function searchBrands(page = 1, search = "") {
 
 //notFound//
 const notFound = document.querySelector("#not-found");
-function checker(data) {
+function check(data) {
   if (data !== 0) {
     notFound.classList.add("hidden");
   } else {
@@ -75,9 +75,9 @@ function paginationButton(total, search) {
   }
 }
 
-//*********************************//
+//*****************************************//
 //_________Show all searched shoes_________//
-//********************************//
+//*****************************************//
 function sneakercard(id = "", imageURL = "", name = "", price = "") {
   return `
     <div
