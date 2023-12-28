@@ -2,12 +2,12 @@
 import axios from "axios";
 import { errorHandler } from "../../libs/errorHandler";
 
-const root = document.getElementById("root");
-const urlParams = new URLSearchParams(window.location.search);
-const sneakerId = urlParams.get("id");
-console.log(urlParams);
+const singlePage = document.getElementById("single-page");
+const newurl = new URLSearchParams(window.location.search);
+const sneakerId = newurl.get("id");
+console.log(newurl);
 
-export async function getSingleSneaker(id) {
+export async function getEachSneaker(id) {
   const token = window.sessionStorage.getItem("token");
 
   console.log(token);
@@ -15,9 +15,7 @@ export async function getSingleSneaker(id) {
   try {
     const response = await axios({
       method: "get",
-
       url: `http://localhost:3000/sneaker/item/${id}`,
-
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -29,41 +27,33 @@ export async function getSingleSneaker(id) {
   }
 }
 
-getSingleSneaker(sneakerId);
+getEachSneaker(sneakerId);
 
-function sneakerInformation(sneaker) {
+function sneakerInfo(sneaker) {
   const sizes = sneaker.sizes.split("|");
-
   const colors = sneaker.colors.split("|");
 
   const colorTag = colors
-
     .map((color) => {
       return `
-
     <div class="border-2 rounded-full ">
-    <div class="rounded-full h-8 w-8 flex justify-center items-center cursor-pointer" style="background-color :${color};"></div>
+    <div class="rounded-full h-8 w-8 flex justify-center items-center
+     cursor-pointer" style="background-color :${color};"></div>
     </div>`;
     })
-
     .join("");
 
   const sizeTag = sizes
-
     .map((size) => {
       return `
-    
-    <p class="rounded-full h-8 w-8 border border-black flex justify-center items-center cursor-pointer active:bg-black active:text-white" id"active-bottun" >${size}</p>`;
+<p class="rounded-full h-8 w-8 border border-black flex justify-center items-center
+ cursor-pointer active:bg-black active:text-white" id"active-bottun" >${size}</p>`;
     })
-
     .join("");
 
   return `
-    
   <div class="w-96">
-  <div><img src="${sneaker.imageURL}" class="w-full " alt="..." /> </div>
-  
-
+  <div><img src="${sneaker.imageURL}" class="w-full " alt="sneaker image" /> </div>
   <div class=" grid gap-4 mt-4">
     <div class="flex justify-between items-start font-bold text-xl ml-3">
       <h1 class="">${sneaker.name}</h1>
@@ -88,16 +78,16 @@ function sneakerInformation(sneaker) {
     </div>
 
     <div w-96 h-1>
-    <p class="text-gray-200 flex justify-center items-center">______________________________________________________</p>
+    <p class="text-gray-200 flex justify-center items-center">
+    ______________________________________________________</p>
     </div>
 
     <div class="ml-3">
       <h2 class="font-bold text-base">Decription</h2>
 
-      <p id="dic" class="text-[13px]">
+      <p  class="text-[13px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. sed do eiusmod
         tempor incididunt ut labore et
-
         <span class="font-semibold">view more...</span>
       </p>
     </div>
@@ -133,7 +123,6 @@ function sneakerInformation(sneaker) {
     <div class="flex justify-between items-center ml-3 mb-8">
       <div class="grid gap-1">
         <p class="text-gray-600 text-xs">Total price</p>
-
         <div class="flex font-bold">
           <span class="text-2xl ">$${sneaker.price}.00</span>
         </div>
@@ -153,7 +142,5 @@ function sneakerInformation(sneaker) {
     `;
 }
 function render(sneaker) {
-  root.innerHTML = sneakerInformation(sneaker);
+  singlePage.innerHTML = sneakerInfo(sneaker);
 }
-
-

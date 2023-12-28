@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //***********************************//
   const loading = document.getElementById("loading");
 
-  //***************************************************************//
+  //**************************************************************//
   //_________Hide the loading page and show the main page_________//
-  //***************************************************************//
+  //**************************************************************//
   setTimeout(function () {
     loading.style.display = "none";
     const mainContent = document.getElementById("main-content");

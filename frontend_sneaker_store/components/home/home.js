@@ -17,14 +17,14 @@ main();
 //*******************************************//
 //_________Change the brands button_________//
 //*******************************************//
-const button_container = document.querySelectorAll(".brands-button button");
+const button_container = document.querySelectorAll(".brands button");
 let tag = "All";
 button_container.forEach((buttonEvent) => {
   buttonEvent.addEventListener("click", change);
 });
 function change() {
   button_container.forEach((tag) => (tag.classList = ""));
-  this.classList.add("my-active");
+  this.classList.add("clicked-now");
   tag = this.innerHTML;
 }
 
@@ -34,7 +34,6 @@ function change() {
 let sneaker = [];
 let totalSneaker = 0;
 const paginationButtons = document.getElementById("pagination-buttons");
-const sneakerList = document.querySelector(".sneaker-list");
 const allproduct = document.getElementById("all");
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +53,8 @@ export async function allsneakers(page = 1) {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log(response);
+    console.log(response);
+
     totalSneaker = response.data.total;
     sneaker = response.data.data;
     console.log(sneaker);
@@ -64,25 +65,23 @@ export async function allsneakers(page = 1) {
   }
 }
 
+const sneakerList = document.querySelector(".list");
 function sneakercard(id = "", imageURL = "", name = "", price = "") {
   return `
   <div
-    id="productCard"
-    class="bg-transparent p-1 w-[182px] h-[244px]"
+    class="bg-transparent p-1 w-[182px] h-[244px] "
     data-set="${id}"
   >
     <div class="flex items-center justify-center">
       <img
-        id="productImage"
         class="w-40 h-40 rounded-2xl"
         src="${imageURL}"
       />
     </div>
-    <div class="card-text-wrapper">
-      <p id="productName" class="text-lg font-medium m-2 overflow-hidden truncate cursor-pointer hover:underline card-profile">${name}</p>
+    <div class="card-text-wrapper font-medium">
+      <p  class="sneakerIN text-lg m-2 overflow-hidden truncate cursor-pointer hover:font-bold">${name}</p>
     </div>
-    
-    <p id="productPrice" class="text-gray-700 mx-2">$${price}</p>
+    <p  class="text-gray-900 mx-2">$${price}</p>
   </div>
   </div>
   `;
@@ -109,12 +108,33 @@ function paginationButton(total) {
   for (let j = 1; j <= total; j++) {
     const btn = document.createElement("button");
     btn.className =
-      "inline-flex items-center border-2 hover:border-black rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  hover:text-black font-bold";
+      "inline-flex items-center border-2 hover:border-black hover:text-black font-bold rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  ";
     btn.textContent = j;
     btn.addEventListener("click", () => allsneakers(j));
     paginationButtons.append(btn);
   }
 }
+
+//***************************************//
+//_________Show single page shoe_________//
+//***************************************//
+sneakerList.addEventListener("click", eHandler);
+
+function eHandler(e) {
+  if (e.target.classList.contains("sneakerIN")) {
+    const idsneaker = e.target.parentElement.parentElement.dataset.set;
+    console.log(idsneaker);
+
+    clickCard(idsneaker);
+  }
+}
+function clickCard(id) {
+  const splittedPathname = window.location.pathname.split("/");
+  window.location.href =
+    splittedPathname.slice(0, splittedPathname.length - 1).join("/") +
+    `/sneakers?id=${id}`;
+}
+
 
 //*****************************//
 //_________Show Nikes_________//
@@ -152,7 +172,7 @@ function paginationButton1(total) {
   for (let j = 1; j <= total; j++) {
     const btn = document.createElement("button");
     btn.className =
-    "inline-flex items-center border-2 hover:border-black rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  hover:text-black font-bold";
+      "inline-flex items-center border-2 hover:border-black rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  hover:text-black font-bold";
     btn.textContent = j;
     btn.addEventListener("click", () => allnikes(j));
     paginationButtons.append(btn);
@@ -355,22 +375,3 @@ export async function allreeboks(page = 1) {
   }
 }
 
-//***************************************//
-//_________Show single page shoe_________//
-//***************************************//
-sneakerList.addEventListener("click", eventHandler);
-
-function eventHandler(e) {
-  if (e.target.classList.contains("card-profile")) {
-    const idsneaker = e.target.parentElement.parentElement.dataset.set;
-    console.log(idsneaker);
-
-    onClickCard(idsneaker);
-  }
-}
-function onClickCard(id) {
-  const splittedPathname = window.location.pathname.split("/");
-  window.location.href =
-    splittedPathname.slice(0, splittedPathname.length - 1).join("/") +
-    `/sneakers?id=${id}`;
-}

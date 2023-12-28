@@ -84,13 +84,13 @@
         <p class="text-lg font-bold ml-2">Most Popular</p>
         <button class="font-bold mr-2">See all</button>
       </div>
-
+      <!-- brands-button -->
       <div class="brands-button flex gap-1 w-96 flex-nowrap overflow-x-scroll">
         <div
           id="buttnon_brands-container"
-          class="brands-button flex flex-nowrap overflow-x-scroll p-3 gap-2"
+          class="brands flex flex-nowrap overflow-x-scroll p-3 gap-2"
         >
-          <button id="all" class="my-active">All</button>
+          <button id="all" class="clicked-now">All</button>
           <button id="nike">Nike</button>
           <button id="adidas">Adidas</button>
           <button id="puma">Puma</button>
@@ -102,11 +102,13 @@
         </div>
       </div>
     </main>
+    <!-- sneaker-list -->
     <div
-      class="sneaker-list mx-auto grid w-full h-[520px] my-4 grid-cols-2 items-start justify-center overflow-y-scroll"
+      class="list mx-auto grid grid-cols-2 items-start justify-center w-full h-[500px] my-4  overflow-y-scroll"
     ></div>
+    <!-- pagination-buttons -->
     <div
-      class="flex gap-3 justify-center items-center pb-8"
+      class="flex justify-center items-center gap-2  pb-7"
       id="pagination-buttons"
     ></div>
 
@@ -208,5 +210,3 @@
 </div>
 <script type="module" src="/libs/userInfo.js"></script>
 <script type="module" src="/components/home/home.js"></script>
-
-

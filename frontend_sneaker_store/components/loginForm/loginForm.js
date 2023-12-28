@@ -29,7 +29,7 @@ form.addEventListener("submit", async function (ev) {
   }
 });
 
-
+// showPassword //
 const showPasswordButton = document.querySelector("#show-password");
 showPasswordButton.addEventListener("click",togglePasswordVisibility)
 function togglePasswordVisibility() {

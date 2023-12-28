@@ -5,29 +5,17 @@ import { errorHandler } from "../../libs/errorHandler";
 let sneaker = [];
 let totalSneaker = 0;
 
-const resultSearch = document.getElementById("result-search");
-const searchInput = document.querySelector("#search-input");
-const noValueSearch = document.querySelector("#no-value-search");
-const pageNumber = document.getElementById("pagination-buttons");
-const textValueInput = document.getElementById("text-value-input");
-const totalResultFound = document.getElementById("total-result-found");
+const input = document.querySelector("#search-input");
+const resultsFor = document.getElementById("results-for");
+const numberFound = document.getElementById("total-result-found");
 
-function checker(data) {
-  if (data !== 0) {
-    noValueSearch.classList.add("hidden");
-    noValueSearch.classList.remove("flex");
-  } else {
-    noValueSearch.classList.remove("hidden");
-    noValueSearch.classList.add("flex");
-  }
-}
-
-searchInput.addEventListener("input", () => {
-  textValueInput.innerText = searchInput.value;
-  searchQueryBrands(1, encodeURIComponent(searchInput.value));
+//resultsFor//
+input.addEventListener("input", () => {
+  resultsFor.innerText = input.value;
+  searchBrands(1, encodeURIComponent(input.value));
 });
 
-function searchQueryBrands(page = 1, search = "") {
+function searchBrands(page = 1, search = "") {
   const token = window.sessionStorage.getItem("token");
   const url = `http://localhost:3000/sneaker?page=${page}&limit=10&search=${search}`;
 
@@ -43,18 +31,28 @@ function searchQueryBrands(page = 1, search = "") {
       checker(response.data.total);
 
       totalSneaker = response.data.total;
-      totalResultFound.innerText = totalSneaker;
+      numberFound.innerText = totalSneaker;
       sneaker = response.data.data;
       console.log(sneaker);
 
-      paginationButton(response.data.totalPages, searchInput.value);
-      ListRenderer(sneaker);
+      paginationButton(response.data.totalPages, input.value);
+      render(sneaker);
     } catch (error) {
       errorHandler(error);
     }
   }
   const debounce = _.debounce(myDebounce, 4000);
   debounce();
+}
+
+//notFound//
+const notFound = document.querySelector("#not-found");
+function checker(data) {
+  if (data !== 0) {
+    notFound.classList.add("hidden");
+  } else {
+    notFound.classList.remove("hidden");
+  }
 }
 
 //______________________________________//
@@ -70,13 +68,16 @@ function paginationButton(total, search) {
       "inline-flex items-center border-2 hover:border-black rounded-full border-gray-800 mb-4 p-1 pr-2 pl-2 text-sm font medium text-gray-800  hover:text-black font-bold";
     btn.textContent = j;
     btn.addEventListener("click", () => {
-      searchQueryBrands(j, search);
+      searchBrands(j, search);
     });
 
-    pageNumber.append(btn);
+    paginationButtons.append(btn);
   }
 }
 
+//*********************************//
+//_________Show all searched shoes_________//
+//********************************//
 function sneakercard(id = "", imageURL = "", name = "", price = "") {
   return `
     <div
@@ -101,7 +102,8 @@ function sneakercard(id = "", imageURL = "", name = "", price = "") {
     `;
 }
 
-function ListRenderer(sneaker) {
+const result = document.getElementById("result");
+function render(sneaker) {
   let html = "";
   for (const product of sneaker) {
     html += sneakercard(
@@ -111,13 +113,13 @@ function ListRenderer(sneaker) {
       product.price
     );
   }
-  resultSearch.innerHTML = html;
+  result.innerHTML = html;
 }
 
 //*****************************************************//
 //_________Show single page for searched shoe_________//
 //****************************************************//
-resultSearch.addEventListener("click", eventHandler);
+result.addEventListener("click", eventHandler);
 
 function eventHandler(e) {
   if (e.target.classList.contains("card-profile")) {
