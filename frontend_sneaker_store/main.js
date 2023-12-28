@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //_________Show loading page_________//
   //***********************************//
   const loading = document.getElementById("loading");
-  loading.style.display = "flex";
 
   //***************************************************************//
   //_________Hide the loading page and show the main page_________//
