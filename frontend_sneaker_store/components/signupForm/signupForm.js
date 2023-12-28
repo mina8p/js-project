@@ -14,12 +14,6 @@ form.addEventListener("input", function (ev) {
 
 form.addEventListener("submit", async function (ev) {
   ev.preventDefault();
-  if (data.repeatPassword !== data.password) {
-    errorAlert.classList.remove("hidden");
-    errorAlert.innerText = "Password and repeat password are not equal";
-    return;
-  }
-  delete data["repeatPassword"];
   try {
     const response = await axios({
       method: "post",
